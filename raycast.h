@@ -1,4 +1,5 @@
 #include <stdio.h>
+#include <stdlib.h>
 
 // structures
 typedef struct
@@ -35,4 +36,4 @@ typedef struct
 } Scene;
 
 // function declarations
-Scene readInputScene(char* filename);
+Scene *readInputScene(char* filename);
