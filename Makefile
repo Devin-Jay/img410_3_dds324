@@ -6,7 +6,7 @@ CFLAGS = -Wall
 TARGET = raycast
 
 # Source files
-SRCS = raycast.c v3math.c utils.cpp main.c
+SRCS = raycast.c v3math.c utils.c main.c
 OBJS = $(SRCS:.c=.o)
 
 # Default rule
