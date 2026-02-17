@@ -2,6 +2,7 @@
 #include <stdlib.h>
 #include <string.h>
 #include <stdbool.h>
+#include "utils.h"
 
 // structures
 typedef struct
@@ -39,3 +40,4 @@ typedef struct
 // function declarations
 bool readProperty(FILE *file, char *property, Scene *scene);
 Scene *readInputScene(char* filename);
+PPMImage *raycast(Scene *scene, int width, int height);

@@ -29,11 +29,13 @@ int main(int argc, char* argv[])
             printf("Object %d: PLANE, color(%.2f, %.2f, %.2f), pos(%.2f, %.2f, %.2f), normal(%.2f, %.2f, %.2f)\n", i, obj.color.x, obj.color.y, obj.color.z, obj.pos.x, obj.pos.y, obj.pos.z, obj.normal.x, obj.normal.y, obj.normal.z);
         }
     }
-    // write new image to output file
-    // writeOutputPPMFile(argv[2], filtered_img);
+
+    PPMImage *result = raycast(scene, atoi(argv[1]), atoi(argv[2]));
+
+    writeOutputPPMFile(argv[4], result);
 
     // free allocated memory
-    // free(filtered_img);
+    free(scene->objects);
     free(scene);
 
 	return 0;

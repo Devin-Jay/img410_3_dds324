@@ -200,3 +200,30 @@ Scene *readInputScene(char* filename)
     fclose(file);
     return scene;
 }
+
+PPMImage *raycast(Scene *scene, int width, int height)
+{
+    // create new image
+    PPMImage *img = (PPMImage*)malloc(sizeof(PPMImage));
+    img->width = width;
+    img->height = height;
+    img->pixels = (uint8_t*)malloc(3 * img->width * img->height);
+
+    // loop through each pixel in the image
+    for (int x = 0; x < img->width; x++)
+    {
+        for (int y = 0; y < img->height; y++)
+        {
+            // compute ray from camera through pixel (x, y)
+            // check for intersection with each object in scene
+            // set pixel color based on closest intersecting object
+
+            // set pixel color to black for now
+            img->pixels[3 * (y * img->width + x)] = 0;
+            img->pixels[3 * (y * img->width + x) + 1] = 255;
+            img->pixels[3 * (y * img->width + x) + 2] = 0;
+        }
+    }
+
+    return img;
+}
