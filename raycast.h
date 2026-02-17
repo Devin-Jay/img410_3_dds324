@@ -1,5 +1,7 @@
 #include <stdio.h>
 #include <stdlib.h>
+#include <string.h>
+#include <stdbool.h>
 
 // structures
 typedef struct
@@ -21,7 +23,6 @@ typedef struct
 typedef struct
 {
     ObjectType type;
-    void *data; // Pointer to either SphereData or PlaneData
     Vector3 pos;
     Vector3 normal; // For planes
     float radius;   // For spheres
@@ -36,4 +37,5 @@ typedef struct
 } Scene;
 
 // function declarations
+bool readProperty(FILE *file, char *property, Scene *scene);
 Scene *readInputScene(char* filename);

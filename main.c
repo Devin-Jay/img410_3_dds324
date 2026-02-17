@@ -16,6 +16,19 @@ int main(int argc, char* argv[])
 
     Scene *scene = readInputScene(argv[3]);
 
+    printf("Camera: pos(%.2f, %.2f, %.2f), width: %.2f, height: %.2f\n", scene->camera.pos.x, scene->camera.pos.y, scene->camera.pos.z, scene->camera.width, scene->camera.height);
+    for (int i = 0; i < scene->objectNum; i++)
+    {
+        Object obj = scene->objects[i];
+        if (obj.type == SPHERE)
+        {
+            printf("Object %d: SPHERE, color(%.2f, %.2f, %.2f), pos(%.2f, %.2f, %.2f), radius: %.2f\n", i, obj.color.x, obj.color.y, obj.color.z,obj.pos.x, obj.pos.y, obj.pos.z, obj.radius);
+        }
+        else if (obj.type == PLANE)
+        {
+            printf("Object %d: PLANE, color(%.2f, %.2f, %.2f), pos(%.2f, %.2f, %.2f), normal(%.2f, %.2f, %.2f)\n", i, obj.color.x, obj.color.y, obj.color.z, obj.pos.x, obj.pos.y, obj.pos.z, obj.normal.x, obj.normal.y, obj.normal.z);
+        }
+    }
     // write new image to output file
     // writeOutputPPMFile(argv[2], filtered_img);
 
