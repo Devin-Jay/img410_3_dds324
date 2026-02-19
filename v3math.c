@@ -1,5 +1,4 @@
 #include "v3math.h"
-#include "raycast.h"
 
 // DEVIN
 Vector3 v3_from_points(Vector3 a, Vector3 b) // form v3 from a to b

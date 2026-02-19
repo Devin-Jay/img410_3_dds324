@@ -2,6 +2,13 @@
 #define _USE_MATH_DEFINES
 #include <math.h>
 
+typedef struct
+{
+    float x;
+    float y;
+    float z;
+} Vector3;
+
 Vector3 v3_from_points(Vector3 a, Vector3 b);
 Vector3 v3_add(Vector3 a, Vector3 b);
 Vector3 v3_subtract(Vector3 a, Vector3 b);

@@ -14,29 +14,20 @@ int main(int argc, char* argv[])
         return 1;
     }
 
+    // parse input scene file and create scene struct
     Scene *scene = readInputScene(argv[3]);
 
-    printf("Camera: pos(%.2f, %.2f, %.2f), width: %.2f, height: %.2f\n", scene->camera.pos.x, scene->camera.pos.y, scene->camera.pos.z, scene->camera.width, scene->camera.height);
-    for (int i = 0; i < scene->objectNum; i++)
-    {
-        Object obj = scene->objects[i];
-        if (obj.type == SPHERE)
-        {
-            printf("Object %d: SPHERE, color(%.2f, %.2f, %.2f), pos(%.2f, %.2f, %.2f), radius: %.2f\n", i, obj.color.x, obj.color.y, obj.color.z,obj.pos.x, obj.pos.y, obj.pos.z, obj.radius);
-        }
-        else if (obj.type == PLANE)
-        {
-            printf("Object %d: PLANE, color(%.2f, %.2f, %.2f), pos(%.2f, %.2f, %.2f), normal(%.2f, %.2f, %.2f)\n", i, obj.color.x, obj.color.y, obj.color.z, obj.pos.x, obj.pos.y, obj.pos.z, obj.normal.x, obj.normal.y, obj.normal.z);
-        }
-    }
-
+    // raycast scene and create output image
     PPMImage *result = raycast(scene, atoi(argv[1]), atoi(argv[2]));
 
+    // output image to ppm file
     writeOutputPPMFile(argv[4], result);
 
     // free allocated memory
     free(scene->objects);
     free(scene);
+    free(result->pixels);
+    free(result);
 
 	return 0;
 }

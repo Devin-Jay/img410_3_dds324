@@ -2,42 +2,12 @@
 #include <stdlib.h>
 #include <string.h>
 #include <stdbool.h>
-#include "utils.h"
-
-// structures
-typedef struct
-{
-    float x;
-    float y;
-    float z;
-} Vector3;
-
-typedef enum {SPHERE, PLANE} ObjectType;
-
-typedef struct
-{
-    Vector3 pos;
-    float width;
-    float height;
-} Camera;
-
-typedef struct
-{
-    ObjectType type;
-    Vector3 pos;
-    Vector3 normal; // For planes
-    float radius;   // For spheres
-    Vector3 color;
-} Object;
-
-typedef struct 
-{
-    Object* objects;
-    Camera camera;
-    int objectNum;
-} Scene;
+#include "structures.h"
 
 // function declarations
 bool readProperty(FILE *file, char *property, Scene *scene);
 Scene *readInputScene(char* filename);
 PPMImage *raycast(Scene *scene, int width, int height);
+Vector3 shoot(Scene *scene, Vector3 rayOrigin, Vector3 rayDir);
+float intersectSphere(Vector3 rayOrigin, Vector3 rayDir, Object sphere);
+float intersectPlane(Vector3 rayOrigin, Vector3 rayDir, Object plane);
