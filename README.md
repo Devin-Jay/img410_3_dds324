@@ -13,7 +13,7 @@ main.c contains programs top level flow. Read input -> raycast -> output to ppm
 
 raycast.c contains functions to read input scene and raycast.
 
-raycast.c also utilizes past projects to output to a ppm and do vector3 math.
+raycast.c also utilizes past projects to do vector3 math.
 
 structures.h contains various datatypes created.
 
