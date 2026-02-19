@@ -17,7 +17,7 @@ raycast.c also utilizes past projects to do vector3 math.
 
 structures.h contains various datatypes created.
 
-Run with ./raycast 200 200 input.scene output.ppm
+Run with ./build/raycast 200 200 input.scene output.ppm
 
 Make clean to delete object files and .exe files.
 
