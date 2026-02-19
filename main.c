@@ -9,13 +9,20 @@
 int main(int argc, char* argv[])
 {
     // Handle improper arguments
-    if (argc < 5) {
+    if (argc < 5)
+    {
         fprintf(stderr, "Error: Missing input/output filenames\n");
         return 1;
     }
 
     // parse input scene file and create scene struct
     Scene *scene = readInputScene(argv[3]);
+
+    // if scene input fails, exit with error
+    if (!scene)
+    {
+        return 1;
+    }
 
     // raycast scene and create output image
     PPMImage *result = raycast(scene, atoi(argv[1]), atoi(argv[2]));
